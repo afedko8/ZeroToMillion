@@ -47,7 +47,6 @@ void casic(long double value, Player& gamer) {
     }
     else {
         std::cout << "Nichya." << std::endl;
-        gamer.money;
     }
     return;
 }

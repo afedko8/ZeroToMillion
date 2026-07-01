@@ -2,7 +2,6 @@
 #include <algorithm>
 #include <iostream>
 #include <cstdlib>
-#include "casino.hpp"
 #include <vector>
 #include "player.hpp"
 
