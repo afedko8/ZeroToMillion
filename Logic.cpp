@@ -45,11 +45,30 @@ void parseCommand(Player& player, Bank& bank)
             player.stamina -= 1;
         }
         else if (command2 == "deposit") {
-            std::cout << "Enter deposit value: ";
-            int depositValue;
-            std::cin >> depositValue;
-            if (depositValue > player.money) { std::cout << "insufficient funds, operation denied" << std::endl; }
-            else { player.deposit += depositValue; player.stamina -= 1; }
+            std::cout << "Withdraw or put money? (1/2)  ";
+            int command2_1;
+            std::cin >> command2_1;
+            if (command2_1 == 2) {
+                std::cout << "Enter deposit value: ";
+                int depositValue;
+                std::cin >> depositValue;
+                if (depositValue > player.money) { std::cout << "insufficient funds, operation denied" << std::endl; }
+                else { player.deposit += depositValue; player.money -= depositValue; player.stamina -= 1; }
+            }
+            else if (command2_1 == 1) {
+                std::cout << "Enter sum to withdraw: ";
+                int withsum;
+                std::cin >> withsum;
+                if (withsum <= player.deposit) {
+                    player.deposit -= withsum;
+                    player.money += withsum;
+                    player.stamina -= 1;
+                }
+                else { std::cout << "Insufficient funds" << std::endl; }
+            }
+            else {
+            
+            }
         }else if (command2 == "repay"){
             std::cout << "Enter amount to repay: ";
             int amount;
@@ -77,7 +96,7 @@ void parseCommand(Player& player, Bank& bank)
         player.stamina = playerStamina;
         // in future make some events
         getEvents(player);
-        player.credit *= bank.monthlyCoefficient;
+        player.credit *= (bank.monthlyCoefficient * 1.1);
         player.deposit *= (bank.monthlyCoefficient);
         std::cout << "Month " << player.months << " has passed. Your credit is now " << player.credit << "." << std::endl;
         
