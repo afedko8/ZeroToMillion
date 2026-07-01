@@ -2,33 +2,10 @@
 #include <algorithm>
 #include <iostream>
 #include <cstdlib>
+#include "casino.hpp"
+#include <vector>
+#include "player.hpp"
 
-
-struct  Player
-{
-    //Potential
-    //int x=0,y=0;
-    unsigned int stamina=playerStamina;
-    long double money=0.0;
-    long double credit=0.0;
-    unsigned int level=1;
-    unsigned int grade=0;
-    unsigned int months=0;
-};
-
-struct Bank
-{
-    long double annualRate=12.0;
-    long double monthlyCoefficient=1.0+annualRate/100.0/12.0;
-};
-
-
-struct Work
-{
-    std::string name;
-    unsigned int staminaCost;
-    std::vector<unsigned int> moneyGain;
-};
 
 std::vector<Work> works ={
     {"Loader", 1, {100, 200, 300}},
@@ -49,7 +26,7 @@ void clearScreen()
 void parseCommand(Player& player, Bank& bank)
 {
     std::string command;
-    std::cout << "Enter command(bank,nm,status,work): ";
+    std::cout << "Enter command(bank,nm,status,work, casino): ";
     std::cin >> command;
     command.erase(std::remove_if(command.begin(), command.end(), isspace), command.end());
     if (command == "bank"){
@@ -102,4 +79,16 @@ void parseCommand(Player& player, Bank& bank)
         std::cout << "Grade: " << player.grade << std::endl;
         std::cout << "Months: " << player.months << std::endl;
     }
+    else if (command == "casino") {
+        long double value;
+        std::cout << "Enter value: " << std::endl;
+        std::cin >> value;
+        if (value > player.money) {
+            std::cout << "Insufficient funds to place a bet" << std::endl;
+        }
+        else {      
+            casic(value, player);
+        }
+    }
+    
 }
