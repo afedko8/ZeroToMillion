@@ -19,6 +19,7 @@ int main() {
         }
         else if (player.money > 1000000.0 && player.credit == 0) {
             std::cout << "Congratulations! You have reached your goal of 1 million. You win!" << std::endl;
+            std::cout << player.money;
             break;
         }
     }

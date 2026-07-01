@@ -1,23 +1,26 @@
+#pragma once
 #include <iostream>
 #include <ctime>
+#include "player.hpp"
 
-using namespace std;
 
-int main() {
+
+void casic(long double value, Player& gamer) {
     srand(time(0));
     int player = (rand() % 10 + 2) + (rand() % 10 + 2);
     int dealer = (rand() % 10 + 2) + (rand() % 10 + 2);
     char choice;
     while (true) {
-        std::cout << "Your score: " << player << endl;
+        std::cout << "Your score: " << player << std::endl;
         if (player > 21) {
-            std::cout << "Overscore. You lose." << endl;
-            return 0;
+            std::cout << "Overscore. You lose." << std::endl;
+            gamer.money -= value;
+            return;
         }
         std::cout << "More (y/n): ";
-        cin >> choice;
+        std::cin >> choice;
         if (choice == 'y') {
-            player += rand()%9 + 2; 
+            player += rand()%10 + 2; 
         }
         else {
             break; 
@@ -26,22 +29,25 @@ int main() {
     
 
 
-    std::cout << "Deallers score" << dealer << endl;
+    std::cout << "Deallers score" << dealer << std::endl;
     while (dealer < 18) {
         dealer += rand() % 10 + 2;
-        std::cout << "Dealer makes his hod" << dealer << endl;
+        std::cout << "Dealer makes his hod" << dealer << std::endl;
     } 
     if (dealer > 21) {
-        std::cout << "Dealers owerscore. You win" << endl;
+        std::cout << "Dealers overscore. You win" << std::endl;
     }
     else if (player > dealer) {
-        std::cout << "You win" << endl;
+        std::cout << "You win" << std::endl;
+        gamer.money += value;
     }
     else if (player < dealer) {
-        std::cout << "You lose." << endl;
+        std::cout << "You lose." << std::endl;
+        gamer.money -= value;
     }
     else {
-        std::cout << "Nichya." << endl;
+        std::cout << "Nichya." << std::endl;
+        gamer.money;
     }
-    return 0;
+    return;
 }
