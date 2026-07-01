@@ -10,11 +10,13 @@ struct  Player
     //Potential
     //int x=0,y=0;
     unsigned int stamina = playerStamina;
+    long double deposit = 0.0;
     long double money = 0.0;
     long double credit = 0.0;
     unsigned int level = 1;
     unsigned int grade = 0;
     unsigned int months = 0;
+
 };
 
 struct Bank

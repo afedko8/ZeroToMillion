@@ -31,7 +31,7 @@ void parseCommand(Player& player, Bank& bank)
     command.erase(std::remove_if(command.begin(), command.end(), isspace), command.end());
     if (command == "bank"){
         std::string command2;
-        std::cout << "Enter bank`s command(take,repay,exit): ";
+        std::cout << "Enter bank`s command(take,repay,deposit,exit): ";
         std::cin >> command2;
         command2.erase(std::remove_if(command2.begin(), command2.end(), isspace), command2.end());
         if (command2 == "take"){
@@ -42,6 +42,13 @@ void parseCommand(Player& player, Bank& bank)
             player.money += amount;
             std::cout << "You took " << amount << " from the bank." << std::endl;
             player.stamina -= 1;
+        }
+        else if (command2 == "deposit") {
+            std::cout << "Enter deposit value: ";
+            int depositValue;
+            std::cin >> depositValue;
+            if (depositValue > player.money) { std::cout << "insufficient funds, operation denied" << std::endl; }
+            else { player.deposit += depositValue; player.stamina -= 1; }
         }else if (command2 == "repay"){
             std::cout << "Enter amount to repay: ";
             int amount;
@@ -69,6 +76,7 @@ void parseCommand(Player& player, Bank& bank)
         player.stamina = playerStamina;
         // in future make some events
         player.credit *= bank.monthlyCoefficient;
+        player.deposit *= (bank.monthlyCoefficient);
         std::cout << "Month " << player.months << " has passed. Your credit is now " << player.credit << "." << std::endl;
     }else if (command == "status"){
         std::cout << "Player status:" << std::endl;
@@ -78,6 +86,7 @@ void parseCommand(Player& player, Bank& bank)
         std::cout << "Level: " << player.level << std::endl;
         std::cout << "Grade: " << player.grade << std::endl;
         std::cout << "Months: " << player.months << std::endl;
+        std::cout << "Deposit: " << player.deposit << std::endl;
     }
     else if (command == "casino") {
         long double value;
