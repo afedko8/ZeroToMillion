@@ -5,6 +5,7 @@
 #include "casino.hpp"
 #include <vector>
 #include "structs.hpp"
+#include "events.hpp"
 
 
 std::vector<Work> works ={
@@ -75,9 +76,11 @@ void parseCommand(Player& player, Bank& bank)
         player.months++;
         player.stamina = playerStamina;
         // in future make some events
+        getEvents(player);
         player.credit *= bank.monthlyCoefficient;
         player.deposit *= (bank.monthlyCoefficient);
         std::cout << "Month " << player.months << " has passed. Your credit is now " << player.credit << "." << std::endl;
+        
     }else if (command == "status"){
         std::cout << "Player status:" << std::endl;
         std::cout << "Money: " << player.money << std::endl;
