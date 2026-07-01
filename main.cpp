@@ -1,5 +1,8 @@
 #include<iostream>
+
 #include "Logic.cpp"
+#include "casino.hpp"
+
 
 int main() {
     Player player;
@@ -14,7 +17,7 @@ int main() {
             std::cout << "You have taken too much credit. Game over." << std::endl;
             break;
         }
-        else if (player.money > 1000000.0) {
+        else if (player.money > 1000000.0 && player.credit == 0) {
             std::cout << "Congratulations! You have reached your goal of 1 million. You win!" << std::endl;
             break;
         }
