@@ -27,15 +27,15 @@ void clearScreen()
 void parseCommand(Player& player, Bank& bank)
 {
     std::string command;
-    std::cout << "Enter command(bank,nm,status,work, casino): ";
+    std::cout << "Enter command(bank,nm,status,work, casino, study): ";
     std::cin >> command;
     command.erase(std::remove_if(command.begin(), command.end(), isspace), command.end());
-    if (command == "bank"){
+    if (command == "bank" && player.stamina > 0) {
         std::string command2;
         std::cout << "Enter bank`s command(take,repay,deposit,exit): ";
         std::cin >> command2;
         command2.erase(std::remove_if(command2.begin(), command2.end(), isspace), command2.end());
-        if (command2 == "take"){
+        if (command2 == "take") {
             std::cout << "Enter amount to take: ";
             int amount;
             std::cin >> amount;
@@ -74,7 +74,7 @@ void parseCommand(Player& player, Bank& bank)
     }else if (command == "nm"){
         //clearScreen();
         player.months++;
-        player.stamina = playerStamina;
+        player.stamina = startPlayerStamina;
         // in future make some events
         getEvents(player);
         player.credit *= bank.monthlyCoefficient;
@@ -90,8 +90,7 @@ void parseCommand(Player& player, Bank& bank)
         std::cout << "Grade: " << player.grade << std::endl;
         std::cout << "Months: " << player.months << std::endl;
         std::cout << "Deposit: " << player.deposit << std::endl;
-    }
-    else if (command == "casino") {
+    }else if (command == "casino") {
         long double value;
         std::cout << "Enter value: " << std::endl;
         std::cin >> value;
@@ -101,6 +100,19 @@ void parseCommand(Player& player, Bank& bank)
         else {      
             blackjack(value, player);
         }
-    }
-    
+    }else if (command == "study"){
+        if (player.stamina < 2) {
+            std::cout << "You do not have enough stamina to study." << std::endl;
+        }
+        else if (player.isStudied) {
+            std::cout << "You have already studied this month." << std::endl;
+        }
+        else {
+            player.isStudied = true;
+            std::cout << "You studied for a month." << std::endl;
+            levelUp(player);
+            player.stamina -= 2;
+            player.studyMonths++;
+        }
+    } 
 }
