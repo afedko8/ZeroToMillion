@@ -3,7 +3,6 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
-#include "player.hpp"
 
 unsigned int playerStamina = 4;
 struct  Player

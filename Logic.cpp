@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include "casino.hpp"
 #include <vector>
-#include "player.hpp"
+#include "structs.hpp"
 
 
 std::vector<Work> works ={
@@ -87,7 +87,7 @@ void parseCommand(Player& player, Bank& bank)
             std::cout << "Insufficient funds to place a bet" << std::endl;
         }
         else {      
-            casic(value, player);
+            blackjack(value, player);
         }
     }
     
