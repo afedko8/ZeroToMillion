@@ -38,5 +38,14 @@ void getEvents(Player& player){
         player.grade = 2;
     }
     std::cout << event.description << std::endl;
-    
+}
+void levelUp(Player& player){
+    if (player.studyMonths == 3){
+        player.level += 1;
+        player.studyMonths = 0;
+        std::cout << "Congratulations! You have leveled up to level " << player.level << "!" << std::endl;
+    }
+    else{
+        std::cout << "You need to study for " << 3 - player.studyMonths << " more months to level up." << std::endl;
+    }
 }

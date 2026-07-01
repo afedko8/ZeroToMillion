@@ -4,18 +4,20 @@
 #include <cstdlib>
 #include <vector>
 
-unsigned int playerStamina = 4;
+unsigned int startPlayerStamina = 4;
 struct  Player
 {
     //Potential
     //int x=0,y=0;
-    unsigned int stamina = playerStamina;
+    unsigned int stamina = startPlayerStamina;
     long double deposit = 0.0;
     long double money = 0.0;
     long double credit = 0.0;
     unsigned int level = 1;
     unsigned int grade = 0;
     unsigned int months = 0;
+    unsigned int studyMonths = 0;
+    bool isStudied = false;
 
 };
 
