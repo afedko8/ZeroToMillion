@@ -1,8 +1,6 @@
 #include<iostream>
 
-#include "Logic.cpp"
-#include "casino.hpp"
-
+#include "game_core.h"
     
 int main() {
     Player player;

@@ -1,11 +1,8 @@
-#pragma once
 #include <algorithm>
 #include <iostream>
 #include <cstdlib>
-#include "casino.hpp"
 #include <vector>
-#include "structs.hpp"
-#include "events.hpp"
+#include "game_core.h"
 
 
 std::vector<Work> works ={

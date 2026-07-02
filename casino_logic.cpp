@@ -1,6 +1,7 @@
-#pragma once
 #include <iostream>
-#include "structs.hpp"
+#include "game_core.h"
+
+
 void blackjack(long double value, Player& gamer) {
     srand(time(0));
     int player = (rand() % 10 + 2) + (rand() % 10 + 2);

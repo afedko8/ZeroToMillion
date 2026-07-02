@@ -3,8 +3,9 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
+#include <unordered_map>
 
-unsigned int startPlayerStamina = 4;
+const unsigned int startPlayerStamina = 4;
 struct  Player
 {
     //Potential
@@ -34,3 +35,18 @@ struct Work
     unsigned int staminaCost;
     std::vector<unsigned int> moneyGain;
 };
+
+class StockMarket {
+public:
+    StockMarket();
+    void displayStockPrices();
+    void simulateStockPriceChanges();
+private:
+    std::unordered_map<std::string, double> stockPrices;
+};
+
+
+void blackjack(long double value, Player& gamer);
+void parseCommand(Player& player, Bank& bank);
+void getEvents(Player& player);
+void levelUp(Player& player);

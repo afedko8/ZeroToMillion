@@ -1,5 +1,5 @@
 #include<iostream>
-#include "structs.hpp"
+#include "game_core.h"
 #include <unordered_map>
 
 struct Event {

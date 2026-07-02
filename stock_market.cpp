@@ -1,16 +1,6 @@
-#pragma once
 #include<iostream>
 #include<unordered_map>
-
-
-class StockMarket {
-public:
-    StockMarket();
-    void displayStockPrices();
-    void simulateStockPriceChanges();
-private:
-    std::unordered_map<std::string, double> stockPrices;
-};
+#include "game_core.h"
 
 void StockMarket::displayStockPrices(){
     std::cout << "Displaying stock prices..." << std::endl;
