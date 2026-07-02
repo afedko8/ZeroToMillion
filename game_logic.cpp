@@ -6,10 +6,10 @@
 
 
 std::vector<Work> works = {
-    {"Loader", 1, {100, 200, 300}},
-    {"Programmer", 2, {500, 1000, 1500}},
-    {"Manager", 3, {1000, 2000, 3000}},
-    {"CEO", 4, {5000, 10000, 15000}}
+    Work("Loader", 1, {100, 200, 300}),
+    Work("Programmer", 2, {500, 1000, 1500}),
+    Work("Manager", 3, {1000, 2000, 3000}),
+    Work("CEO", 4, {5000, 10000, 15000})
 };
 
 void clearScreen()

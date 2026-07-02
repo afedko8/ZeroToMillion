@@ -43,12 +43,13 @@ struct Asset
     long double baseVolatility;     // Базовая волатильность: определяет склонность актива к резким скачкам (рискованность)
     long double minPrice;           // Экономический предохранитель: минимально возможная цена, ниже которой актив не может упасть
     long double eventModifier;      // Модификатор тренда от новости: искусственный плюс или минус к росту цены (например, +0.05)
+    std::string name;                  // Название актива (например, "Gold", "Silver", "Copper")
     std::vector<long double> priceHistory;
     unsigned int count;             // Количество единиц актива (сколько на рынке)
     unsigned int marketState;       // Текущая фаза рынка (0 - BULL/Рост, 1 - BEAR/Падение, 2 - FLAT/Боковик)
     unsigned int eventDuration;     // Счетчик ходов: сколько месяцев ('nm') еще будет активно случайное событие
-    Asset(long double p, long double v, long double minP, long double eM, std::vector<long double> pH, unsigned int c, unsigned int mS, unsigned int eD)
-        : price(p), baseVolatility(v), minPrice(minP), eventModifier(eM), priceHistory(pH), count(c), marketState(mS), eventDuration(eD) {}
+    Asset(std::string n,long double p, long double v, long double minP, long double eM, std::vector<long double> pH, unsigned int c, unsigned int mS, unsigned int eD)
+        : price(p), baseVolatility(v), minPrice(minP), eventModifier(eM), priceHistory(pH), name(n), count(c), marketState(mS), eventDuration(eD) {}
 };
 
 
@@ -60,7 +61,7 @@ public:
     void simulateStockPriceChanges();
 
 private:
-    std::unordered_map<std::string,Asset> stockPrices;
+   std::vector<Asset> stockPrices;
 };
 
 void blackjack(long double value, Player &gamer);
