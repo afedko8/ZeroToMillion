@@ -10,8 +10,8 @@ struct Player
 {
     // Potential
     // int x=0,y=0;
-    long double deposit = 0.0;
     long double money = 0.0;
+    long double deposit = 0.0;
     long double credit = 0.0;
     unsigned int stamina = kstartPlayerStamina;
     unsigned int level = 1;
