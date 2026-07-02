@@ -90,7 +90,7 @@ void parseCommand(Player& player, Bank& bank)
     }else if (command == "nm"){
         //clearScreen();
         player.months++;
-        player.stamina = startPlayerStamina;
+        player.stamina = kstartPlayerStamina;
         // in future make some events
         getEvents(player);
         player.credit *= (bank.monthlyCoefficient * 1.1);
