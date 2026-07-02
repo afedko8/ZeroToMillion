@@ -32,7 +32,7 @@ struct Work
     std::string name;
     std::vector<unsigned int> moneyGain;
     unsigned int staminaCost;
-    
+    Work(std::string n, unsigned int s, std::vector<unsigned int> mg) : name(n), staminaCost(s), moneyGain(mg) {}
 };
 // 0 - kBull (Рост), 1 - kBear (Падение), 2 - kFlat (Боковик)
 enum {kBull,kBear,kFlat};

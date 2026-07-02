@@ -5,7 +5,7 @@
 #include "game_core.h"
 
 
-std::vector<Work> works ={
+std::vector<Work> works = {
     {"Loader", 1, {100, 200, 300}},
     {"Programmer", 2, {500, 1000, 1500}},
     {"Manager", 3, {1000, 2000, 3000}},
