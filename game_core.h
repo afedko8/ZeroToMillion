@@ -10,10 +10,10 @@ struct Player
 {
     // Potential
     // int x=0,y=0;
-    unsigned int stamina = kstartPlayerStamina;
     long double deposit = 0.0;
     long double money = 0.0;
     long double credit = 0.0;
+    unsigned int stamina = kstartPlayerStamina;
     unsigned int level = 1;
     unsigned int grade = 0;
     unsigned int months = 0;
@@ -30,17 +30,25 @@ struct Bank
 struct Work
 {
     std::string name;
-    unsigned int staminaCost;
     std::vector<unsigned int> moneyGain;
+    unsigned int staminaCost;
+    
 };
+// 0 - kBull (Рост), 1 - kBear (Падение), 2 - kFlat (Боковик)
+enum {kBull,kBear,kFlat};
 
 struct Asset
 {
-    std::string name;
-    long double price;
-    unsigned int quantity;
+    long double price;              // Текущая стоимость одной единицы актива (акции/товара)
+    long double baseVolatility;     // Базовая волатильность: определяет склонность актива к резким скачкам (рискованность)
+    long double minPrice;           // Экономический предохранитель: минимально возможная цена, ниже которой актив не может упасть
+    long double eventModifier;      // Модификатор тренда от новости: искусственный плюс или минус к росту цены (например, +0.05)
     std::vector<long double> priceHistory;
+    unsigned int count;             // Количество единиц актива (сколько на рынке)
+    unsigned int marketState;       // Текущая фаза рынка (0 - BULL/Рост, 1 - BEAR/Падение, 2 - FLAT/Боковик)
+    unsigned int eventDuration;     // Счетчик ходов: сколько месяцев ('nm') еще будет активно случайное событие
 };
+
 
 class StockMarket
 {
@@ -50,7 +58,7 @@ public:
     void simulateStockPriceChanges();
 
 private:
-    std::unordered_map<std::string, double> stockPrices;
+    std::unordered_map<std::string,Asset> stockPrices;
 };
 
 void blackjack(long double value, Player &gamer);

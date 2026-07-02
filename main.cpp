@@ -5,6 +5,7 @@
 int main() {
     Player player;
     Bank bank;
+    StockMarket stock_market;
     while (true) {
         parseCommand(player, bank);
         if (player.months > 3 && player.credit > 0) {
